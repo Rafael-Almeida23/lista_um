@@ -3,31 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calcular Fatorial</title>
+    <title>Contar Números Pares</title>
 </head>
 <body>
 
-<h2>Calcular o fatorial de um número</h2>
+<h2>Contar quantos números pares existem entre 1 e o número informado</h2>
 
 <form method="get" action="">
     <label for="numero">Digite um número:</label>
     <input type="number" name="numero" id="numero" required>
-    <button type="submit">Calcular</button>
+    <button type="submit">Contar</button>
 </form>
 
 <?php
 
 if (isset($_GET['numero'])) {
     $numero = intval($_GET['numero']);
-    if ($numero < 0) {
-        echo "Fatorial não definido para números negativos.";
-    } else {
-        $fatorial = 1;
-        for ($i = 1; $i <= $numero; $i++) {
-            $fatorial *= $i;
+    $contador = 0;
+    for ($i = 1; $i <= $numero; $i++) {
+        if ($i % 2 == 0) {
+            $contador++;
         }
-        echo "O fatorial de $numero é $fatorial.";
     }
+    echo "Existem $contador números pares entre 1 e $numero.";
 }
 ?>
 
